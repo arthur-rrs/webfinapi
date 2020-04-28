@@ -33,11 +33,11 @@ return [
     |                    "custom", "stack"
     |
     */
-
+  
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single',],
             'ignore_exceptions' => false,
         ],
 

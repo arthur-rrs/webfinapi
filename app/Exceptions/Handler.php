@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -36,6 +37,12 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        $erro = sprintf('Message: %s\nFile: %s\nLine:%s', 
+            $exception->getMessage(),
+            $exception->getFile(),
+            $exception->getFile()
+        );
+        Log::emergency($erro);
         parent::report($exception);
     }
 
