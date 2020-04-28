@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\StoreUserRequest;
+use App\Model\Account;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +18,10 @@ class AuthController extends Controller
         $input['password'] = $newPassword;
         $user = new User($input);
         $user->save();
+        $account = new Account();
+        $account->user_id = $user->id;
+        $account->name = 'Carteira';
+        $account->save(); 
         return response()->json($user, 201);
     }
 
